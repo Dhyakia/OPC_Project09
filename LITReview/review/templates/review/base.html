@@ -1,0 +1,35 @@
+{% load static %}
+<html>
+    <head>
+        <title>LITReview</title>
+        <link rel="stylesheet" href="{% static 'review/style.css' %}">
+    </head>
+    <body>
+
+        <!-- 
+            Navbar Logic:
+        
+            user is logged:
+            - all the nav options are shown
+            - clicking on LITReview link to "Your Post" page
+
+            user is NOT logged:
+            - Only show the title
+            - clicking on LITReview link to "Login" page
+        -->
+
+        <div class="topnav">
+            <a href="#">LITReview</a>
+            <div class="topnav-right">
+                <a href="#">Flux</a>
+                <a href="#">Posts</a>
+                <a href="#">Abonnements</a>
+                <a href="#">Se déconnecter</a>
+            </div>
+        </div>
+
+        {% block content%}
+        <!-- CONTENT HERE -->
+        {% endblock %}
+    </body>
+</html>

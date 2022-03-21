@@ -1,0 +1,29 @@
+body {
+    margin:auto;
+    background-color: whitesmoke;
+}
+
+.topnav {
+    border: 2px solid black;
+    text-align: center;
+    margin: 4px 6px 0px 2px;
+    padding: 12px 0px 20px 0px;
+} 
+
+.topnav, a {
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.topnav, a:hover {
+    text-decoration: underline;
+}
+
+.topnav-right {
+    float: right;
+}
+
+.topnav-right, a {
+    margin-left: 4px;
+    margin-right: 4px;
+}
