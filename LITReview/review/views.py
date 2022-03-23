@@ -30,3 +30,15 @@ def myContent(request):
         request,
         'review/my_content.html'
     )
+
+def editReview(request):
+    return render(
+        request,
+        'review/edit_review.html'
+    )
+
+def editTicket(request):
+    return render(
+        request,
+        'review/edit_ticket.html'
+    )
