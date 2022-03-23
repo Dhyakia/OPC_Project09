@@ -3,6 +3,10 @@ body {
     background-color: whitesmoke;
 }
 
+button {
+    padding: 4px 8px 4px 8px;
+}
+
 .viewport {
     border: 2px solid black;
 }
@@ -19,6 +23,7 @@ body {
     padding: 12px 0px 20px 0px;
 } 
 .topnav, a {
+    position:static;
     font-size: 18px;
     text-decoration: none!important;
 }
@@ -43,3 +48,10 @@ body {
 }
 
 /* Signup.html style */
+
+/* Flux.html style */
+.flux-container {
+    margin: 1% 10% 1% 10%;
+    border: 2px solid black;
+
+}
