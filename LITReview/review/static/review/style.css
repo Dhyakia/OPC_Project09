@@ -24,7 +24,6 @@ button {
     padding: 12px 0px 20px 0px;
 } 
 .topnav, a {
-    position:static;
     font-size: 18px;
     text-decoration: none!important;
 }
@@ -56,6 +55,7 @@ button {
 
 /* Create_ticket.html style */
 .create-ticket {
+    overflow: hidden;
     border: 2px solid black;
     margin-top: 5%;
     margin-left: 10%;
@@ -63,6 +63,8 @@ button {
 }
 #ticket-submit {
     float:right;
+    margin-bottom: 2%;
+    margin-right: 4%;
 }
 
 /* New_review.html style */

@@ -24,3 +24,4 @@ def createReview(request):
         request,
         'review/new_review.html'
     )
+
