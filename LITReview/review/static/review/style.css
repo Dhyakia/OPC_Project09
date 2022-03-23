@@ -1,14 +1,16 @@
-/* Base.html global CSS */
+/* Base.html - global style */
 body {
     background-color: whitesmoke;
 }
 
 .viewport {
-    margin-top: 12px;
-    margin-bottom: 12px;
-    margin-left: 6px;
-    margin-right: 6px;
     border: 2px solid black;
+}
+
+.content-block {
+    text-align: center;
+    margin-top: 120px;
+    margin-bottom: 240px;
 }
 
 .topnav {
@@ -16,32 +18,19 @@ body {
     text-align: center;
     padding: 12px 0px 20px 0px;
 } 
-
 .topnav, a {
     font-size: 18px;
     text-decoration: none!important;
 }
-
-.topnav, a:hover {
-    text-decoration: underline;
-}
-
 .topnav-right {
     float: right;
 }
-
 .topnav-right, a {
     margin-left: 4px;
     margin-right: 4px;
 }
 
-
-/* Login.html CSS */
-.loginpage {
-    text-align: center;
-    padding-top: 10%;
-    padding-bottom: 10%;
-}
+/* Login.html style */
 .login-signup {
     display: inline-block;
     margin-right: 15%;
@@ -49,11 +38,8 @@ body {
 .login-signin {
     display: inline-block;
 }
-
-#login-signup {
-    
-}
-
 #login-submitbtn {
     float: right;
 }
+
+/* Signup.html style */

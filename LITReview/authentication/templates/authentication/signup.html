@@ -1,6 +1,23 @@
 {% extends 'review/base.html' %}
 {% block content %}
 
-<h2>signup block</h2>
+<div class="signup-page">
+    <h2>Inscrivez vous !</h2>
+
+    <!-- Signup form based on user model -->
+    <div div="signup-form">
+        <p>Formulaire:</p>
+        <p>username</p>
+        <p>Mot de passe</p>
+        <p>Confirmer le mot de passe</p>
+    </div>
+
+    <div div="signup-btn">
+        <a href="{% url 'login' %}"><button>Retour</button></a>
+        <a href="{% url 'login' %}"><button>S'inscrire</button></a>
+    </div>
+    
+</div>
+
 
 {% endblock %}
