@@ -16,4 +16,5 @@ urlpatterns = [
     path('review/my_content/', reviV.myContent, name='my-content'),
     path('review/edit_review/', reviV.editReview, name='edit-review'),
     path('review/edit_thick/', reviV.editTicket, name='edit-ticket'),
+    path('review/delete', reviV.confirmDelete, name='delete-content'),
 ]

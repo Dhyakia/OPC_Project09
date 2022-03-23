@@ -42,3 +42,9 @@ def editTicket(request):
         request,
         'review/edit_ticket.html'
     )
+
+def confirmDelete(request):
+    return render(
+        request,
+        'review/delete_content.html'
+    )

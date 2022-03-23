@@ -1,0 +1,10 @@
+{% extends 'review/base.html' %}
+{% block content %}
+
+<h1>Vous allez supprimer: "name"</h1>
+
+<p>Page de confirmation pour suppression d'un fichier.</p>
+<p>Affiche le nom ainsi qu'un deux boutton: supprimer et annuler.</p>
+<p>Redirect vers le <a href="{% url 'flux' %}">flux</a>.</p>
+
+{% endblock %}
