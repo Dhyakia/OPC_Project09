@@ -18,18 +18,20 @@
             - clicking on LITReview link to "Login" page
         -->
 
-        <div class="topnav">
-            <a href="#">LITReview</a>
-            <div class="topnav-right">
-                <a href="#">Flux</a>
-                <a href="#">Posts</a>
-                <a href="#">Abonnements</a>
-                <a href="#">Se déconnecter</a>
+        <div class="viewport">
+            <div class="topnav">
+                <a href="#">LITReview</a>
+                <div class="topnav-right">
+                    <a href="#">Flux</a>
+                    <a href="#">Posts</a>
+                    <a href="#">Abonnements</a>
+                    <a href="#">Se déconnecter</a>
+                </div>
             </div>
+            {% block content%}
+            <!-- CONTENT HERE -->
+            {% endblock %}
         </div>
-
-        {% block content%}
-        <!-- CONTENT HERE -->
-        {% endblock %}
+        
     </body>
 </html>

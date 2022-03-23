@@ -7,5 +7,6 @@ from review import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', authV.login, name='login-page'),
+    path('auth/login/', authV.login, name='login'),
+    path('auth/signup/', authV.signup, name='signup'),
 ]

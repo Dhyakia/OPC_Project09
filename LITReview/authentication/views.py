@@ -4,4 +4,11 @@ from django.shortcuts import render
 def login(request):
     return render(
         request, 
-        'authentication/login.html')
+        'authentication/login.html'
+    )
+
+def signup(request):
+    return render(
+        request,
+        'authenfication/signup.html'
+    )
