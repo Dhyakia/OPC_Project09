@@ -25,3 +25,8 @@ def createReview(request):
         'review/new_review.html'
     )
 
+def myContent(request):
+    return render(
+        request,
+        'review/my_content.html'
+    )
