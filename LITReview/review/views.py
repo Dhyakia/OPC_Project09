@@ -12,3 +12,15 @@ def follows(request):
         request,
         'review/follows.html'
     )
+
+def createTicket(request):
+    return render(
+        request,
+        'review/create_ticket.html'
+    )
+
+def createReview(request):
+    return render(
+        request,
+        'review/new_review.html'
+    )

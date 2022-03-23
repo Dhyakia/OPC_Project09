@@ -4,7 +4,8 @@ body {
 }
 
 button {
-    padding: 4px 8px 4px 8px;
+    padding: 6px 12px 6px 12px;
+    border-radius: 4px;
 }
 
 .viewport {
@@ -47,10 +48,35 @@ button {
     float: right;
 }
 
-/* Signup.html style */
-
 /* Flux.html style */
 .flux-container {
     margin: 1% 10% 1% 10%;
     border: 2px solid black;
+}
+
+/* Create_ticket.html style */
+.create-ticket {
+    border: 2px solid black;
+    margin-top: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+#ticket-submit {
+    float:right;
+}
+
+/* New_review.html style */
+.new-review {
+    overflow: hidden;
+    border: 1px solid black;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.new-review-review {
+    border-top: 1px solid black;
+}
+#new-review-submit {
+    float:right;
+    margin-bottom: 2%;
+    margin-right: 4%;
 }
