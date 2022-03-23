@@ -6,3 +6,9 @@ def flux(request):
         request,
         'review/flux.html'
     )
+
+def follows(request):
+    return render(
+        request,
+        'review/follows.html'
+    )

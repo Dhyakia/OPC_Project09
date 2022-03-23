@@ -10,4 +10,6 @@ urlpatterns = [
     path('auth/login/', authV.login, name='login'),
     path('auth/signup/', authV.signup, name='signup'),
     path('flux/', reviV.flux, name='flux'),
+    path('follows/', reviV.follows, name='follows'),
+    
 ]
