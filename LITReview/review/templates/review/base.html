@@ -6,18 +6,6 @@
     </head>
     <body>
 
-        <!-- 
-            Navbar Logic:
-        
-            user is logged:
-            - all the nav options are shown
-            - clicking on LITReview link to "Your Post" page
-
-            user is NOT logged:
-            - Only show the title
-            - clicking on LITReview link to "Login" page
-        -->
-
         <div class="viewport">
             <div class="topnav">
 
@@ -25,17 +13,23 @@
                     <a href="#" id="mark">LITReview</a>
                 </div>
                 
+                
+                {% if user.is_authenticated %}
+                <p>TEMP; Logged as: //{{user.username}}//</p>
                 <div class="topnav-right">
                     <a href="{% url 'flux' %}">Flux</a>
                     <a href="{% url 'my-content' %}">Posts</a>
                     <a href="{% url 'follows' %}">Abonnements</a>
-                    <a href="{% url 'login' %}">Se déconnecter</a>
+                    <a href="{% url 'logout' %}">Se déconnecter</a>
                 </div>
+                {% endif %}
             </div>
             <div class="content-block">
+
             {% block content%}
             <!-- CONTENT HERE -->
             {% endblock %}
+
             </div>
         </div>
         

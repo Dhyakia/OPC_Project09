@@ -12,20 +12,13 @@
     <!-- Block: sign-in -->
     <div class="login-signin">
         <h2>Connectez vous</h2><br>
+
         <!-- login form here -->
-        <form>
-
-            <div >
-                <label for="username">Nom d'utilisateur</label>
-                <input type="text" name="username" id="username">
-            </div>
-            <div>
-                <label for="mdp">Mot de passe</label>
-                <input type="text" name="mdp" id="mdp">
-            </div>
-
-            <button id="login-submitbtn" type="submit">Se connecter</button>
-
+        <p>{{message}}</p>
+        <form method="post">
+            {{form.as_p}}
+            {% csrf_token %}
+            <button type="submit">Se connecter</button>
         </form>
         
     </div>

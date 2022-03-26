@@ -1,3 +1,4 @@
+from contextlib import redirect_stderr
 from django.contrib import admin
 from django.urls import path
 
@@ -7,7 +8,8 @@ from review import views as reviV
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', authV.login, name='login'),
+    path('login/',authV.login.as_view(), name='login'),
+    path('logout/', authV.logout, name='logout'),
     path('signup/', authV.signup, name='signup'),
     path('review/flux/', reviV.flux, name='flux'),
     path('review/follows/', reviV.follows, name='follows'),

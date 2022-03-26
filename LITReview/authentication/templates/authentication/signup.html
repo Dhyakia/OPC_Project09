@@ -5,18 +5,15 @@
     <h2>Inscrivez vous !</h2>
 
     <!-- Signup form based on user model -->
-    <div div="signup-form">
-        <p>Formulaire basé sur le modèle "user"</p>
-        <p>username</p>
-        <p>Mot de passe</p>
-        <p>Confirmer le mot de passe</p>
-    </div>
+    <form method="post">
+        {{form.as_p}}
+        {% csrf_token %}
+        <button type="submit">S'inscrire</button>
+    </form>
 
-    <div div="signup-btn">
-        <a href="{% url 'login' %}"><button>Retour</button></a>
-        <a href="{% url 'login' %}"><button>S'inscrire</button></a>
-    </div>
+    <a href="{% url 'login' %}">Retour à la page de connexion</a>
     
+
 </div>
 
 {% endblock %}

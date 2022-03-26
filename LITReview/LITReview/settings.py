@@ -71,6 +71,20 @@ DATABASES = {
 }
 
 
+# Login_required redirect
+
+LOGIN_URL = 'login'
+
+
+# Successfull connection redirect
+
+LOGIN_REDIRECT_URL = 'flux'
+
+
+# Custom user model
+
+AUTH_USER_MODEL = 'authentication.User'
+
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
@@ -93,7 +107,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fr-fr'
 
 TIME_ZONE = 'UTC'
 
