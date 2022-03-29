@@ -15,7 +15,9 @@
                 
                 
                 {% if user.is_authenticated %}
-                <p>TEMP; Logged as: //{{user.username}}//</p>
+                <div class="topnav-left">
+                    <span>Logged as: {{user.username}}</span>
+                </div>
                 <div class="topnav-right">
                     <a href="{% url 'flux' %}">Flux</a>
                     <a href="{% url 'my-content' %}">Posts</a>
@@ -24,6 +26,7 @@
                 </div>
                 {% endif %}
             </div>
+        </div>
             <div class="content-block">
 
             {% block content%}

@@ -1,5 +1,4 @@
 from django import forms
-from django.views.generic import View
 from django.conf import settings
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate
@@ -9,17 +8,18 @@ from django.contrib.auth.decorators import login_required
 from . import forms
 
 
-class login(View):
+def login(request):
+
     template_name = 'authentication/login.html'
     form_class = forms.LoginForm
 
-    def get(self, request):
-        form = self.form_class()
+    if request.method == 'GET':
+        form = form_class()
         message = ''
-        return render(request, self.template_name, context={'form': form, 'message': message})
+        return render(request, template_name, context={'form': form, 'message': message})
 
-    def post(self, request):
-        form = self.form_class(request.POST)
+    elif request.method == 'POST':
+        form = form_class(request.POST)
         if form.is_valid():
             user = authenticate(
                 username=form.cleaned_data['username'],
@@ -28,9 +28,9 @@ class login(View):
             if user is not None:
                 auth_login(request, user)
                 return redirect(settings.LOGIN_REDIRECT_URL)
-        
+
         message = 'Identifiants invalides.'
-        return render(request, self.template_name, context={'form': form, 'message': message})
+        return render(request, template_name, context={'form': form, 'message': message})
 
 
 @login_required
@@ -45,7 +45,7 @@ def signup(request):
         form = forms.RegisterForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)
+            auth_login(request, user)
             return redirect(settings.LOGIN_REDIRECT_URL)
 
     return render(request, 'authentication/signup.html', context={'form': form})

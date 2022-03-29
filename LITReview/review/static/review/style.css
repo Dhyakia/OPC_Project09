@@ -4,7 +4,7 @@ body {
 }
 
 button {
-    padding: 6px 12px 6px 12px;
+    padding: 10px 14px 10px 14px;
     border-radius: 4px;
 }
 
@@ -27,12 +27,19 @@ button {
     font-size: 18px;
     text-decoration: none!important;
 }
+.topnav-left {
+    float: left;
+}
 .topnav-right {
     float: right;
 }
 .topnav-right, a {
     margin-left: 4px;
     margin-right: 4px;
+}
+
+.errorlist {
+    list-style: none;
 }
 
 /* Login.html style */
