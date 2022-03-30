@@ -4,12 +4,12 @@
 
 <h1>Créer un ticket</h1>
 
-<div class="create-ticket">
+{{message}}
 
-    <p>Créer un form sur le modèle "ticket"</p>
-    <p>Le formulaire prend: Titre + Description + Image</p>
-
+<form method="post" class="create-ticket" enctype="multipart/form-data">
+    {{form.as_p}}
+    {% csrf_token %}
     <button id="ticket-submit" type="submit">Envoyer</button>
-</div>
+</form>
 
 {%  endblock %}

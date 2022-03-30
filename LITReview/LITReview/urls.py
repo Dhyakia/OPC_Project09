@@ -1,6 +1,7 @@
-from contextlib import redirect_stderr
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 
 from authentication import views as authV
 from review import views as reviV
@@ -20,3 +21,6 @@ urlpatterns = [
     path('review/edit_thick/', reviV.editTicket, name='edit-ticket'),
     path('review/delete', reviV.confirmDelete, name='delete-content'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_URL)
