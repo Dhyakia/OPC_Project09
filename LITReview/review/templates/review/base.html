@@ -16,7 +16,7 @@
                 
                 {% if user.is_authenticated %}
                 <div class="topnav-left">
-                    <span>Logged as: {{user.username}}</span>
+                    <span>Utilisateur : {{user.username}}</span>
                 </div>
                 <div class="topnav-right">
                     <a href="{% url 'flux' %}">Flux</a>

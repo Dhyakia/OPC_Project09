@@ -1,3 +1,9 @@
 from django.contrib import admin
 
-# Register your models here.
+from review.models import Ticket
+
+class TicketAdmin(admin.ModelAdmin):
+    list_display = ('title', 'user', 'time_created')
+
+
+admin.site.register(Ticket, TicketAdmin)
