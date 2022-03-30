@@ -1,0 +1,25 @@
+
+<div class="my-content-ticket">
+
+    <div class="my-content-ticket-header">
+        <p id="ticket-header-left">Vous avez publié un ticket</p>
+        <p id="ticket-header-right">{{post.time_created}}</p>
+    </div>
+    
+    <div class="my-content-ticket-image">
+        <h3>{{post.title}}</h3>
+        <img src="{{post.image.url}}" width="240px">
+    </div>
+
+    <!-- LES BUTTONS DOIVENT PASSER L'ID DU TICKET-->
+    <div class="my-content-ticket-btn">
+        <a href="{% url 'edit-ticket' post.id %}"><button>modifier</button></a>
+        <a href="{% url 'delete-content' %}"><button>supprimer</button></a>
+    </div>
+</div>
+
+
+
+
+
+

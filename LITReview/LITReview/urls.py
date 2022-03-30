@@ -18,9 +18,8 @@ urlpatterns = [
     path('review/new_review/', reviV.createReview, name='new-review'),
     path('review/my_content/', reviV.myContent, name='my-content'),
     path('review/edit_review/', reviV.editReview, name='edit-review'),
-    path('review/edit_thick/', reviV.editTicket, name='edit-ticket'),
-    path('review/delete', reviV.confirmDelete, name='delete-content'),
+    path('review/edit_ticket/<int:id>/', reviV.editTicket, name='edit-ticket'),
+    path('review/delete/<int:id>/', reviV.confirmDelete, name='delete-content'),
 ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_URL)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

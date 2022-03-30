@@ -1,15 +1,21 @@
-from . import forms
-from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect, render
+from django.db.models import CharField, Value
+
+
+from . import forms
+from review.models import Ticket
 
 
 @login_required
 def flux(request):
     return render(request, 'review/flux.html')
 
+
 @login_required
 def follows(request):
     return render(request, 'review/follows.html')
+
 
 @login_required
 def createTicket(request):
@@ -41,17 +47,50 @@ def createReview(request):
     return render(
         request, 'review/new_review.html')
 
+
 @login_required
 def myContent(request):
-    return render(request, 'review/my_content.html')
+
+    # take reviews
+    # annotate reviews
+
+    # TODO: take tickets wich value 'user' is equal to the current USER
+    tickets = Ticket.objects.filter(user=request.user)
+    tickets = tickets.annotate(content_type=Value('TICKET', CharField()))
+
+    # combine the posts
+    # TODO: ORDER PER DATE
+    posts = tickets
+
+    # TODO: CHANGE CONTEXT WHEN USING POST
+    context = {'posts': posts}
+    return render(request, 'review/my_content.html', context=context)
+
 
 @login_required
 def editReview(request):
     return render(request, 'review/edit_review.html')
 
+
 @login_required
-def editTicket(request):
-    return render(request, 'review/edit_ticket.html')
+def editTicket(request, id):
+
+    ticket = Ticket.objects.get(id=id)
+
+    if request.method == 'GET':
+        form = forms.TicketForm(instance=ticket)
+
+    if request.method == 'POST':
+        form = forms.TicketForm(request.POST, instance=ticket)
+        
+        if form.is_valid():
+            form.save()
+            return redirect('my-content')
+
+    context = {'form': form}
+
+    return render(request, 'review/edit_ticket.html', context=context)
+
 
 @login_required
 def confirmDelete(request):

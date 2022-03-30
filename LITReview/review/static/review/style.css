@@ -4,7 +4,7 @@ body {
 }
 
 button {
-    padding: 10px 14px 10px 14px;
+    padding: 20px 34px 20px 34px;
     border-radius: 4px;
 }
 
@@ -74,18 +74,32 @@ button {
     margin-right: 4%;
 }
 
-/* New_review.html style */
-.new-review {
-    overflow: hidden;
-    border: 1px solid black;
-    margin-left: 10%;
-    margin-right: 10%;
+/* My_content.html style */
+.my-content-block {
+    border: 2px solid black;
+    width: 50%;
+    margin: auto;
 }
-.new-review-review {
-    border-top: 1px solid black;
+.my-content-ticket {
+    border-bottom: 1px solid black;
+    width: 100%;
+    margin: auto;
 }
-#new-review-submit {
-    float:right;
-    margin-bottom: 2%;
-    margin-right: 4%;
+.my-content-ticket-header {
+    text-align: left;
+    display: flex;
+}
+#ticket-header-left, #ticket-header-right {
+    display: inline-block;
+}
+#ticket-header-left {
+    flex: 1;
+    padding-left: 4px;
+}
+#ticket-header-right {
+    padding-right: 4px;
+}
+.my-content-ticket-btn {
+    padding-top: 30px;
+    padding-bottom: 30px;
 }

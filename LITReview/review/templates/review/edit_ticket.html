@@ -3,9 +3,11 @@
 
 <h1>Modifier votre ticket</h1>
 
-<p>Import un formulaire sur le modèle d'un ticket (titre/description/image)</p>
-<p>Auto complete les infos déjà présentes.</p>
+<form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Envoyer</button>
+</form>
 
-<button type="submit">Envoyer</button>
 
 {% endblock %}

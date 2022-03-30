@@ -1,21 +1,20 @@
 {% extends 'review/base.html' %}
 {% block content %}
 
-<p>Affiche les posts de l'utilisateur, du plus récent au plus anciens (5 derniers résultats)</p>
-
 <h1>Vos posts</h1>
 
-<div class="my-content">
-    <p>Il doit être possible de modifier/supprimer un ticket.</p>
-    <a href="{% url 'edit-ticket' %}"><button>modifier TICKET</button></a>
-    <a href="{% url 'delete-content' %}"><button>supprimer</button></a>
+<!-- DONT FORGET TO ORDER THE POST PER DATE IN THE VIEWS -->
+<div class="my-content-block">
+    {% for post in posts %}
+        {% if post.content_type == 'TICKET' %}
+            {% include 'review/ticket_snippet.html' %}    
 
-    <p>Il doit être possible de modifier/supprimer une critique.</p>
-    <a href="{% url 'edit-review' %}"><button>modifier CRITIQUE</button></a>
-    <a href="{% url 'delete-content' %}"><button>supprimer</button></a>
+        {% elif post.content_type == 'REVIEW' %}
+            {% include 'review/review_snippet.html' %}
+            {% endif %}
 
-    <p>Page de <strong>confirmation</strong> puis <strong>redirection</strong> pour les bouttons supprimer.</p>
-
+    {% endfor %}
 </div>
+
 
 {% endblock %}
