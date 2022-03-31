@@ -1,0 +1,17 @@
+{% extends 'review/base.html' %}
+{% block content %}
+<h1>Supprimer un ticket</h1>
+
+<div class="delete-content-box">
+
+    <strong class="delete-content-message">Vous êtes sur le point de supprimer un ticket pour:
+        <br>{{ticket.title}}</strong><br>
+    
+    <form action="" method="post">
+        {% csrf_token %}
+        <button class="delete-content-btn" type="submit">SUPPRIMER</button><br>
+    </form>
+    
+    <a href="{% url 'my-content' %}">Retour</a>
+</div>
+{% endblock %}

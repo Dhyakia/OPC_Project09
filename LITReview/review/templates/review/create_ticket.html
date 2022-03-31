@@ -1,15 +1,12 @@
 {% extends 'review/base.html' %}
 {% block content %}
-
-
 <h1>Créer un ticket</h1>
 
 {{message}}
 
-<form method="post" class="create-ticket" enctype="multipart/form-data">
+<form method="post" class="ticket-form-block" enctype="multipart/form-data">
     {% csrf_token %}
     {{form.as_p}}
-    <button id="ticket-submit" type="submit">Envoyer</button>
+    <button class="ticket-form-btn" type="submit">Envoyer</button>
 </form>
-
 {%  endblock %}

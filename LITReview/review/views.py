@@ -54,7 +54,6 @@ def myContent(request):
     # take reviews
     # annotate reviews
 
-    # TODO: take tickets wich value 'user' is equal to the current USER
     tickets = Ticket.objects.filter(user=request.user)
     tickets = tickets.annotate(content_type=Value('TICKET', CharField()))
 
@@ -62,7 +61,6 @@ def myContent(request):
     # TODO: ORDER PER DATE
     posts = tickets
 
-    # TODO: CHANGE CONTEXT WHEN USING POST
     context = {'posts': posts}
     return render(request, 'review/my_content.html', context=context)
 
@@ -80,6 +78,9 @@ def editTicket(request, id):
     if request.method == 'GET':
         form = forms.TicketForm(instance=ticket)
 
+        context = {'form': form}
+        return render(request, 'review/edit_ticket.html', context=context)
+
     if request.method == 'POST':
         form = forms.TicketForm(request.POST, instance=ticket)
         
@@ -87,11 +88,20 @@ def editTicket(request, id):
             form.save()
             return redirect('my-content')
 
-    context = {'form': form}
-
-    return render(request, 'review/edit_ticket.html', context=context)
-
 
 @login_required
-def confirmDelete(request):
-    return render(request, 'review/delete_content.html')
+def deleteTicket(request, id):
+
+    ticket = Ticket.objects.get(id=id)
+
+    if request.method == 'GET':
+        context = {'ticket': ticket}
+        return render(request, 'review/delete_ticket.html', context=context)
+
+    if request.method == 'POST':
+        
+        if ticket.image:
+            ticket.image.delete()
+
+        ticket.delete()
+        return redirect('my-content')

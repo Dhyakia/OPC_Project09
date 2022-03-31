@@ -54,21 +54,15 @@ button {
     float: right;
 }
 
-/* Flux.html style */
-.flux-container {
-    margin: 1% 10% 1% 10%;
-    border: 2px solid black;
-}
-
 /* Create_ticket.html style */
-.create-ticket {
+.ticket-form-block {
     overflow: hidden;
     border: 2px solid black;
     margin-top: 5%;
     margin-left: 10%;
     margin-right: 10%;
 }
-#ticket-submit {
+.ticket-form-btn {
     float:right;
     margin-bottom: 2%;
     margin-right: 4%;
@@ -102,4 +96,22 @@ button {
 .my-content-ticket-btn {
     padding-top: 30px;
     padding-bottom: 30px;
+}
+/* delete_ticket & delete_review style */
+.delete-content-box {
+    border: 2px solid black;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    width: 60%;
+    margin: auto;
+}
+.delete-content-message {
+    padding-top: 12px;
+    font-size: large;
+}
+.delete-content-btn {
+    color: white;
+    background-color: red;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
