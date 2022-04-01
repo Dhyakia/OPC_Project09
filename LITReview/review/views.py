@@ -44,8 +44,7 @@ def createTicket(request):
 
 @login_required
 def createReview(request):
-    return render(
-        request, 'review/new_review.html')
+    return render(request, 'review/new_review.html')
 
 
 @login_required
@@ -63,11 +62,6 @@ def myContent(request):
 
     context = {'posts': posts}
     return render(request, 'review/my_content.html', context=context)
-
-
-@login_required
-def editReview(request):
-    return render(request, 'review/edit_review.html')
 
 
 @login_required
@@ -105,3 +99,4 @@ def deleteTicket(request, id):
 
         ticket.delete()
         return redirect('my-content')
+

@@ -2,7 +2,6 @@
 {% block content %}
 <h1>Vos posts</h1>
 
-<!-- DONT FORGET TO ORDER THE POST PER DATE IN THE VIEWS -->
 <div class="my-content-block">
     {% for post in posts %}
         {% if post.content_type == 'TICKET' %}
