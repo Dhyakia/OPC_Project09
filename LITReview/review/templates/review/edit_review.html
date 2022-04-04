@@ -1,5 +1,15 @@
 {% extends 'review/base.html' %}
 {% block content %}
 
-<p>edit d'une review</p>
+<h1>Modifier votre critique</h1>
+
+<div class="review-form-block">
+
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="form-btn "type="submit">Envoyer</button>
+    </form>
+</div>
+
 {% endblock %}

@@ -17,6 +17,4 @@ class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
         fields = ("headline", "rating", "body")
-        # TODO: rating doit s'afficher comme une liste 'radio'
-        # horizontalement
         widgets = {"rating": forms.RadioSelect()}

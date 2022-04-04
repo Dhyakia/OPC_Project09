@@ -1,16 +1,26 @@
-<p>Vous avez publié une critique</p>
-<p>date en haut à droite: {{ post.time_created }}</p>
-<p>Titre de la critique: {{ post.headline }} - /note en étoile/ </p>
-<p>/body/</p>
+<div class="my-content-snippet">
+    
+    <div class="my-content-review-header">
+        <p class="review-header-left">Vous avez publié une critique</p>
+        <p class="review-header-right">{{post.time_created}}</p>
+    </div>
 
-<p>block affichant le ticket répondu:</p>
-<p>Ticket - /user name/</p>
-<p>/title/</p>
-<p>/image/</p>
-<p>fin du block, le 2 bouttons en bas à droite</p>
+    <div class="my-content-review-body">
+        <h3>{{post.headline}} - Score: {{post.rating}} / 5</h3>
+        <p>{{post.body}}</p>
+    </div>
+    
+    <br>
 
+    <div class="my-content-review-ticket">
+        <p>Ticket - {{post.ticket.user}}</p>
+        <h4>{{post.ticket.title}}</h4>
+        <img src="{{post.ticket.image.url}}" width="240px">
+    </div>
 
-<div class="my-content-review-btn">
-    <a href="{% url 'edit-review' post.id %}"><button>modifier</button></a>
-    <a href="{% url 'delete-review' post.id %}"><button>supprimer</button></a>
+    <div class="my-content-block-btn">
+        <a href="{% url 'edit-review' post.id %}"><button>modifier</button></a>
+        <a href="{% url 'delete-review' post.id %}"><button>supprimer</button></a>
+    </div>
+
 </div>

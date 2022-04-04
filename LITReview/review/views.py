@@ -104,8 +104,6 @@ def createReview(request):
         return render(request, template_name, context=context)
 
 
-
-
 @login_required
 def editTicket(request, id):
 
@@ -113,7 +111,6 @@ def editTicket(request, id):
 
     if request.method == 'GET':
         form = forms.TicketForm(instance=ticket)
-
         context = {'form': form}
         return render(request, 'review/edit_ticket.html', context=context)
 
@@ -124,10 +121,23 @@ def editTicket(request, id):
             form.save()
             return redirect('my-content')
 
+
 @login_required
 def editReview(request, id):
 
-    return render(request, 'review/edit_review.html')
+    review = Review.objects.get(id=id)
+
+    if request.method == 'GET':
+        form = forms.ReviewForm(instance=review)
+        context = {'form': form}
+        return render(request, 'review/edit_review.html', context=context)
+
+    if request.method == 'POST':
+        form = forms.ReviewForm(request.POST, instance=review)
+
+        if form.is_valid():
+            form.save()
+            return redirect('my-content')
 
 
 @login_required

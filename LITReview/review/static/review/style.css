@@ -114,32 +114,56 @@ textarea {
 /* My_content.html style */
 .my-content-block {
     border: 2px solid black;
+    border-bottom: 1px solid black;
     width: 50%;
     margin: auto;
 }
-.my-content-ticket {
+.my-content-snippet {
+    text-align: left;
     border-bottom: 1px solid black;
-    width: 100%;
-    margin: auto;
+    margin-left: 4px;
+    margin-right: 4px;
 }
-.my-content-ticket-header {
+.my-content-block-btn {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-right: 10px;
+    text-align: right;
+}
+.my-content-review-body {
+    text-align: left;
+    padding-left: 4px;
+}
+.my-content-review-healine {
+    font-size: larger;
+    font-weight: 100;
+}
+.my-content-ticket-header, 
+.my-content-review-header,
+.my-content-review-ticket {
     text-align: left;
     display: flex;
 }
-#ticket-header-left, #ticket-header-right {
+.my-content-review-ticket {
+    border: 1px solid black;
+    width: 85%;
+    margin: auto;
+    flex-direction: column;
+    padding: 4px 8px 4px 8px;
+}
+.ticket-header-left, .ticket-header-right, 
+.review-header-left, .review-header-right {
     display: inline-block;
 }
-#ticket-header-left {
+.ticket-header-left, .review-header-left {
     flex: 1;
     padding-left: 4px;
 }
-#ticket-header-right {
-    padding-right: 4px;
+.ticket-header-right, .review-header-right{
+    padding-right: 14px;
+    font-size: smaller;
 }
-.my-content-ticket-btn {
-    padding-top: 30px;
-    padding-bottom: 30px;
-}
+
 
 /* delete_ticket & delete_review style */
 .delete-content-box {
