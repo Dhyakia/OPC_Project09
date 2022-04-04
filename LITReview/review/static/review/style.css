@@ -140,7 +140,8 @@ textarea {
 }
 .my-content-ticket-header, 
 .my-content-review-header,
-.my-content-review-ticket {
+.my-content-review-ticket,
+.review-form-ticket-header {
     text-align: left;
     display: flex;
 }
@@ -152,18 +153,47 @@ textarea {
     padding: 4px 8px 4px 8px;
 }
 .ticket-header-left, .ticket-header-right, 
-.review-header-left, .review-header-right {
+.review-header-left, .review-header-right,
+.ticket-recap-header-left, .ticket-recap-header-right {
     display: inline-block;
 }
-.ticket-header-left, .review-header-left {
+.ticket-header-left, 
+.review-header-left,
+.ticket-recap-header-left {
     flex: 1;
     padding-left: 4px;
 }
-.ticket-header-right, .review-header-right{
+.ticket-header-right, 
+.review-header-right,
+.ticket-recap-header-right {
     padding-right: 14px;
     font-size: smaller;
 }
 
+/* Edit_review style */
+.review-form-block-alt {
+    border: 2px solid black;
+    text-align: left;
+    overflow: hidden;
+    width: 50%;
+    margin: auto;
+}
+.review-form-ticket-wrapper {
+    border-bottom: 2px solid black;
+    padding-bottom: 10px;
+}
+.review-form-ticket-recap {
+    padding-left: 10px;
+    border: 1px solid black;
+    width: 60%;
+    margin: auto;
+}
+.review-form-ticket-body img{
+    padding-bottom: 4px;
+}
+.review-edit-review-form {
+    padding-left: 10px;
+}
 
 /* delete_ticket & delete_review style */
 .delete-content-box {

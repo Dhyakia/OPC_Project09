@@ -3,13 +3,36 @@
 
 <h1>Modifier votre critique</h1>
 
-<div class="review-form-block">
+<div class="review-form-block-alt">
 
-    <form method="post">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button class="form-btn "type="submit">Envoyer</button>
-    </form>
+    <div class="review-form-ticket-wrapper">
+        <p>Critique en réponse au ticket:</p>
+
+        <div class="review-form-ticket-recap">
+            <div class="review-form-ticket-header">
+                <p class="ticket-recap-header-left">{{ticket.user}} à demandé une critique</p>
+                <p class="ticket-recap-header-right">{{ticket.time_created}}</p>
+            </div>
+    
+            <div class="review-form-ticket-body">
+                <p>{{ticket.title}}</p>
+                <p>{{ticket.description}}</p>
+                <img src="{{ticket.image.url}}" width="140px">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="review-edit-review-form">
+        <form method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button class="form-btn "type="submit">Envoyer</button>
+        </form>
+    </div>
+
 </div>
+
+
 
 {% endblock %}

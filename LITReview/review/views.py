@@ -129,7 +129,8 @@ def editReview(request, id):
 
     if request.method == 'GET':
         form = forms.ReviewForm(instance=review)
-        context = {'form': form}
+        ticket = review.ticket
+        context = {'form': form, 'ticket': ticket}
         return render(request, 'review/edit_review.html', context=context)
 
     if request.method == 'POST':
