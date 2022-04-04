@@ -1,5 +1,16 @@
-<p>Review snipper</p>
+<p>Vous avez publié une critique</p>
+<p>date en haut à droite: {{ post.time_created }}</p>
+<p>Titre de la critique: {{ post.headline }} - /note en étoile/ </p>
+<p>/body/</p>
 
-<!-- TODO: CREATE HTLM FOR BOTH -->
-<a href="{% url 'edit-review' %}"><button>modifier CRITIQUE</button></a>
-<a href="{% url 'delete-review' %}"><button>supprimer</button></a>
+<p>block affichant le ticket répondu:</p>
+<p>Ticket - /user name/</p>
+<p>/title/</p>
+<p>/image/</p>
+<p>fin du block, le 2 bouttons en bas à droite</p>
+
+
+<div class="my-content-review-btn">
+    <a href="{% url 'edit-review' post.id %}"><button>modifier</button></a>
+    <a href="{% url 'delete-review' post.id %}"><button>supprimer</button></a>
+</div>

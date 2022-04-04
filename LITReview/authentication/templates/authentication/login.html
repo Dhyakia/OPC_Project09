@@ -1,18 +1,16 @@
 {% extends 'review/base.html' %}
 {% block content %}
+
 <div class="login-page">
 
-    <!-- Block: redirect to sign up page -->
     <div class="login-signup">
         <h2>Inscrivez vous maintenant</h2>
         <a id="login-signup" href="{% url 'signup' %}"><button>S'inscrire</button></a>
     </div>
 
-    <!-- Block: sign-in -->
     <div class="login-signin">
         <h2>Connectez vous</h2><br>
 
-        <!-- login form here -->
         <p>{{message}}</p>
         <form method="post">
             {{form.as_p}}
@@ -22,4 +20,5 @@
         
     </div>
 </div>
+
 {% endblock %}

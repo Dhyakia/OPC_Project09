@@ -8,6 +8,18 @@ button {
     border-radius: 4px;
 }
 
+input, label, textarea {
+    display: block;
+}
+
+input {
+    width: 95%;
+}
+
+textarea {
+    width: 95%;
+}
+
 .viewport {
     border: 2px solid black;
 }
@@ -43,10 +55,15 @@ button {
 }
 
 /* Login.html style */
+.login-page, button {
+    margin-top: 15px;
+}
+
 .login-signup {
     display: inline-block;
     margin-right: 15%;
 }
+
 .login-signin {
     display: inline-block;
 }
@@ -54,19 +71,45 @@ button {
     float: right;
 }
 
-/* Create_ticket.html style */
+.signup-page {
+    width: 30%;
+    margin: auto;
+}
+
+/* Create_ticket & Create_review style */
+.form-block {
+    text-align: left;
+}
 .ticket-form-block {
+    text-align: left;
     overflow: hidden;
     border: 2px solid black;
-    margin-top: 5%;
-    margin-left: 10%;
-    margin-right: 10%;
+    width: 50%;
+    margin: auto;
+    margin-top: 20px;
+    padding-top: 10px;
+    padding-left: 10px;
 }
-.ticket-form-btn {
+.review-form-block {
+    overflow: hidden;
+    border: 2px solid black;
+    border-top: 0px;
+    width: 50%;
+    margin: auto;
+    padding-left: 10px;
+}
+.form-btn {
     float:right;
     margin-bottom: 2%;
     margin-right: 4%;
 }
+#id_rating div{
+    display: inline-block;
+}
+#id_rating div label{
+    display: inline;
+}
+
 
 /* My_content.html style */
 .my-content-block {
@@ -97,8 +140,10 @@ button {
     padding-top: 30px;
     padding-bottom: 30px;
 }
+
 /* delete_ticket & delete_review style */
 .delete-content-box {
+    text-align: left;
     border: 2px solid black;
     padding-top: 12px;
     padding-bottom: 12px;

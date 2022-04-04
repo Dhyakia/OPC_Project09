@@ -1,10 +1,10 @@
 {% extends 'review/base.html' %}
 {% block content %}
+
 <div class="signup-page">
     
     <h2>Inscrivez vous !</h2>
 
-    <!-- Signup form based on user model -->
     <form method="post">
         {{form.as_p}}
         {% csrf_token %}
@@ -14,4 +14,5 @@
     <a href="{% url 'login' %}">Retour à la page de connexion</a>
     
 </div>
+
 {% endblock %}

@@ -15,10 +15,12 @@ urlpatterns = [
     path('review/flux/', reviV.flux, name='flux'),
     path('review/follows/', reviV.follows, name='follows'),
     path('review/create_ticket/', reviV.createTicket, name='create-ticket'),
-    path('review/new_review/', reviV.createReview, name='new-review'),
+    path('review/create_review/', reviV.createReview, name='new-review'),
     path('review/my_content/', reviV.myContent, name='my-content'),
     path('review/edit_ticket/<int:id>/', reviV.editTicket, name='edit-ticket'),
+    path('review/edit_review/<int:id>/', reviV.editReview, name='edit-review'),
     path('review/delete_ticket/<int:id>/', reviV.deleteTicket, name='delete-ticket'),
+    path('review/delete_review/<int:id>/', reviV.deleteReview, name='delete-review'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
