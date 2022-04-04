@@ -197,7 +197,7 @@ textarea {
 
 /* delete_ticket & delete_review style */
 .delete-content-box {
-    text-align: left;
+    text-align: center;
     border: 2px solid black;
     padding-top: 12px;
     padding-bottom: 12px;

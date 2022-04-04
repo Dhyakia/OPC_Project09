@@ -67,6 +67,42 @@ def createTicket(request):
 
 
 @login_required
+def editTicket(request, id):
+
+    ticket = Ticket.objects.get(id=id)
+
+    if request.method == 'GET':
+        form = forms.TicketForm(instance=ticket)
+        context = {'form': form}
+        return render(request, 'review/edit_ticket.html', context=context)
+
+    if request.method == 'POST':
+        form = forms.TicketForm(request.POST, instance=ticket)
+        
+        if form.is_valid():
+            form.save()
+            return redirect('my-content')
+
+
+@login_required
+def deleteTicket(request, id):
+
+    ticket = Ticket.objects.get(id=id)
+
+    if request.method == 'GET':
+        context = {'ticket': ticket}
+        return render(request, 'review/delete_ticket.html', context=context)
+
+    if request.method == 'POST':
+        
+        if ticket.image:
+            ticket.image.delete()
+
+        ticket.delete()
+        return redirect('my-content')
+
+
+@login_required
 def createReview(request):
 
     template_name = 'review/create_review.html'
@@ -105,24 +141,6 @@ def createReview(request):
 
 
 @login_required
-def editTicket(request, id):
-
-    ticket = Ticket.objects.get(id=id)
-
-    if request.method == 'GET':
-        form = forms.TicketForm(instance=ticket)
-        context = {'form': form}
-        return render(request, 'review/edit_ticket.html', context=context)
-
-    if request.method == 'POST':
-        form = forms.TicketForm(request.POST, instance=ticket)
-        
-        if form.is_valid():
-            form.save()
-            return redirect('my-content')
-
-
-@login_required
 def editReview(request, id):
 
     review = Review.objects.get(id=id)
@@ -142,25 +160,17 @@ def editReview(request, id):
 
 
 @login_required
-def deleteTicket(request, id):
+def deleteReview(request, id):
 
-    ticket = Ticket.objects.get(id=id)
+    review = Review.objects.get(id=id)
 
     if request.method == 'GET':
-        context = {'ticket': ticket}
-        return render(request, 'review/delete_ticket.html', context=context)
+        context = {'review': review}
+        return render(request, 'review/delete_review.html', context=context)
 
     if request.method == 'POST':
-        
-        if ticket.image:
-            ticket.image.delete()
 
-        ticket.delete()
-        
+        review.delete()
         return redirect('my-content')
-
-
-@login_required
-def deleteReview(request, id):
 
     return render(request, 'review/delete_review.html')

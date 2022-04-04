@@ -5,10 +5,10 @@
 
 <div class="delete-content-box">
 
-    <strong class="delete-content-message">Vous êtes sur le point de supprimer un ticket pour:
-        <br>{{ticket.title}}</strong><br>
+    <p class="delete-content-message"><strong >Vous êtes sur le point de supprimer un ticket pour:</strong></p>
+    <p>{{ticket.title}}</p><br>    
     
-    <form action="" method="post">
+    <form method="post">
         {% csrf_token %}
         <button class="delete-content-btn" type="submit">SUPPRIMER</button><br>
     </form>
