@@ -1,7 +1,7 @@
 <div class="my-content-snippet">
     
     <div class="my-content-review-header">
-        <p class="review-header-left">Vous avez publié une critique</p>
+        <p class="review-header-left">{{user.username}} à publié une critique</p>
         <p class="review-header-right">{{post.time_created}}</p>
     </div>
 
@@ -19,8 +19,11 @@
     </div>
 
     <div class="my-content-block-btn">
+
+        {% if name == 'my_content' %}
         <a href="{% url 'edit-review' post.id %}"><button>modifier</button></a>
         <a href="{% url 'delete-review' post.id %}"><button>supprimer</button></a>
+        {% endif %}
     </div>
 
 </div>

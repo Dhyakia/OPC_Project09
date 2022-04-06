@@ -111,12 +111,20 @@ textarea {
 }
 
 
-/* My_content.html style */
-.my-content-block {
+/* my_content flux, and create_critic style */
+.my-content-block,
+.flux-page-content {
     border: 2px solid black;
     border-bottom: 1px solid black;
     width: 50%;
     margin: auto;
+}
+.flux-btn {
+    padding-bottom: 20px;
+}
+.flux-btn a {
+    padding-left: 2%;
+    padding-right: 2%;
 }
 .my-content-snippet {
     text-align: left;
@@ -145,12 +153,24 @@ textarea {
     text-align: left;
     display: flex;
 }
-.my-content-review-ticket {
+.my-content-review-ticket,
+.ticket-recap-infos {
     border: 1px solid black;
     width: 85%;
     margin: auto;
     flex-direction: column;
     padding: 4px 8px 4px 8px;
+}
+.ticket-recap {
+    border: 2px solid black;
+    overflow: hidden;
+    width: 50%;
+    margin: auto;
+    padding-bottom: 4%;
+    padding-left: 10px;
+}
+.ticket-recap p {
+    padding-left: 4px;
 }
 .ticket-header-left, .ticket-header-right, 
 .review-header-left, .review-header-right,
@@ -181,6 +201,9 @@ textarea {
 .review-form-ticket-wrapper {
     border-bottom: 2px solid black;
     padding-bottom: 10px;
+}
+.review-form-ticket-wrapper p {
+    padding-left: 4px;
 }
 .review-form-ticket-recap {
     padding-left: 10px;

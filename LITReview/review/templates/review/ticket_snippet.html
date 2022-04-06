@@ -1,8 +1,7 @@
-
 <div class="my-content-snippet">
 
     <div class="my-content-ticket-header">
-        <p class="ticket-header-left">Vous avez publié un ticket</p>
+        <p class="ticket-header-left">{{user.username}} à publié un ticket</p>
         <p class="ticket-header-right">{{post.time_created}}</p>
     </div>
     
@@ -12,13 +11,13 @@
     </div>
 
     <div class="my-content-block-btn">
+
+        {% if name == 'my_content' %}
         <a href="{% url 'edit-ticket' post.id %}"><button>modifier</button></a>
         <a href="{% url 'delete-ticket' post.id %}"><button>supprimer</button></a>
+        
+        {% elif name == 'flux' %}
+        <a href="{% url 'create-critic' post.id %}"><button type="submit">Créer une critique</button></a>
+        {% endif %}
     </div>
 </div>
-
-
-
-
-
-

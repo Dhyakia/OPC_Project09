@@ -15,7 +15,21 @@ def follows(request):
 
 @login_required
 def flux(request):
-    return render(request, 'review/flux.html')
+
+    reviews = Review.objects.filter(user=request.user)
+    reviews = reviews.annotate(content_type=Value('REVIEW', CharField()))
+
+    tickets = Ticket.objects.filter(user=request.user)
+    tickets = tickets.annotate(content_type=Value('TICKET', CharField()))
+
+    posts = sorted(
+        chain(reviews, tickets),
+        key=lambda post: post.time_created,
+        reverse=True
+    )
+
+    context = {'posts': posts}
+    return render(request, 'review/flux.html', context=context)
 
 
 @login_required
@@ -45,8 +59,8 @@ def createTicket(request):
 
     if request.method == 'GET':
         form = form_class()
-        message = ''
 
+        message = ''
         context = {'form': form, 'message': message}
         return render(request, template_name, context=context)
 
@@ -61,8 +75,77 @@ def createTicket(request):
             return redirect('my-content')
         
         message = 'forms incorrect.'
-
         context = {'form': form, 'message': message}
+        return render(request, template_name, context=context)
+
+
+@login_required
+def createReview(request):
+
+    template_name = 'review/create_review.html'
+    ticket_form = forms.TicketForm
+    review_form = forms.ReviewForm
+
+    if request.method == 'GET':
+        t_form = ticket_form()
+        r_form = review_form()
+        message = ''
+        context = {'t_form': t_form, 'r_form': r_form, 'message': message}
+
+        return render(request, template_name, context=context)
+
+    elif request.method == 'POST':
+        t_form = ticket_form(request.POST, request.FILES)
+        r_form = review_form(request.POST)
+
+        if t_form.is_valid() and r_form.is_valid():
+
+            ticket = t_form.save(commit=False)
+            ticket.user = request.user
+            ticket.save()
+
+            review = r_form.save(commit=False)
+            review.user = request.user
+            review.ticket = ticket
+            review.save()
+
+            return redirect('my-content')
+
+        message = 'forms incorrect'   
+        context = {'t_form': t_form, 'r_form': r_form, 'message': message}
+        return render(request, template_name, context=context)
+
+
+@login_required
+def createCritic(request, id):
+
+    template_name = 'review/create_critic.html'
+    ticket = Ticket.objects.get(id=id)
+
+    ticket_form = forms.TicketForm
+    review_form = forms.ReviewForm
+
+    if request.method == 'GET': 
+        r_form = review_form()
+        message = ''
+        context = {'ticket': ticket, 'r_form': r_form, 'message': message}
+
+        return render(request, template_name, context=context)
+
+    elif request.method == 'POST':
+        t_form = ticket_form(instance=id)
+        r_form = review_form(request.POST)
+
+        if r_form.is_valid():
+            review = r_form.save(commit=False)
+            review.user = request.user
+            review.ticket = ticket
+            review.save()
+
+            return redirect('my-content')
+
+        message = 'forms incorrect'   
+        context = {'ticket': ticket, 'r_form': r_form, 'message': message}
         return render(request, template_name, context=context)
 
 
@@ -85,62 +168,6 @@ def editTicket(request, id):
 
 
 @login_required
-def deleteTicket(request, id):
-
-    ticket = Ticket.objects.get(id=id)
-
-    if request.method == 'GET':
-        context = {'ticket': ticket}
-        return render(request, 'review/delete_ticket.html', context=context)
-
-    if request.method == 'POST':
-        
-        if ticket.image:
-            ticket.image.delete()
-
-        ticket.delete()
-        return redirect('my-content')
-
-
-@login_required
-def createReview(request):
-
-    template_name = 'review/create_review.html'
-    ticket_form = forms.TicketForm
-    review_form = forms.ReviewForm
-
-    if request.method == 'GET':
-        t_form = ticket_form()
-        r_form = review_form()
-        message = ''
-
-        context = {'t_form': t_form, 'r_form': r_form, 'message': message}
-        return render(request, template_name, context=context)
-
-    elif request.method == 'POST':
-        t_form = ticket_form(request.POST, request.FILES)
-        r_form = review_form(request.POST)
-
-        if t_form.is_valid() and r_form.is_valid():
-
-            ticket = t_form.save(commit=False)
-            ticket.user = request.user
-            ticket.save()
-
-            review = r_form.save(commit=False)
-            review.user = request.user
-            review.ticket = ticket
-            review.save()
-
-            return redirect('my-content')
-
-        message = 'forms incorrect'
-        
-        context = {'t_form': t_form, 'r_form': r_form, 'message': message}
-        return render(request, template_name, context=context)
-
-
-@login_required
 def editReview(request, id):
 
     review = Review.objects.get(id=id)
@@ -157,6 +184,24 @@ def editReview(request, id):
         if form.is_valid():
             form.save()
             return redirect('my-content')
+
+
+@login_required
+def deleteTicket(request, id):
+
+    ticket = Ticket.objects.get(id=id)
+
+    if request.method == 'GET':
+        context = {'ticket': ticket}
+        return render(request, 'review/delete_ticket.html', context=context)
+
+    if request.method == 'POST':
+        
+        if ticket.image:
+            ticket.image.delete()
+
+        ticket.delete()
+        return redirect('my-content')
 
 
 @login_required

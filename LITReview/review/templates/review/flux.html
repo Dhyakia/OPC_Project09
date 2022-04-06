@@ -1,14 +1,27 @@
 {% extends 'review/base.html' %}
 {% block content %}
-<p><strong>Montre les critiques et ticket des utilisateurs suivit.</strong></p>
-<p><strong>Montre aussi les tickets et reviews de l'utilisateurs, ainsi que les reviews de leurs propre ticket.</strong></p>
 
 <div class="flux-page">
 
+    <h1>Flux</h1>
+
     <div class="flux-btn">
         <a href="{% url 'create-ticket' %}"><button>Demander une critique</button></a>
-        <a href="{% url 'new-review' %}"><button>Créer une critique</button></a>
+        <a href="{% url 'create-review' %}"><button>Créer une critique</button></a>
+    </div>
+
+    <div class="flux-page-content">
+        {% for post in posts %}
+            {% if post.content_type == 'TICKET' %}
+                {% include 'review/ticket_snippet.html' with name='flux' %}    
+
+            {% elif post.content_type == 'REVIEW' %}
+                {% include 'review/review_snippet.html' with name='flux' %}
+                {% endif %}
+
+        {% endfor %} 
     </div>
 
 </div>
+
 {% endblock %}

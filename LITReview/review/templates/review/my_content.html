@@ -6,10 +6,10 @@
 <div class="my-content-block">
     {% for post in posts %}
         {% if post.content_type == 'TICKET' %}
-            {% include 'review/ticket_snippet.html' %}    
+            {% include 'review/ticket_snippet.html' with name='my_content' %}    
 
         {% elif post.content_type == 'REVIEW' %}
-            {% include 'review/review_snippet.html' %}
+            {% include 'review/review_snippet.html' with name='my_content' %}
             {% endif %}
 
     {% endfor %}

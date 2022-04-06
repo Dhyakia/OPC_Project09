@@ -1,0 +1,32 @@
+{% extends 'review/base.html' %}
+{% block content %}
+
+<h1>Créer une critique en réponse d'un ticket</h1>
+
+{{message}}
+
+<div class="form-block">
+    <div class="ticket-recap">
+
+        <div class="ticket-recap-header">
+            <p>Vous êtes en train de poster en réponse au ticket:</p>
+        </div>
+
+        <div class="ticket-recap-infos">
+            <p>Ticket - {{ticket.user}}</p>
+            <h4>{{ticket.title}}</h4>
+            <img src="{{ticket.image.url}}" width="140px">
+        </div>
+
+    </div>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="review-form-block">
+            <p>Critique</p><br>
+            {{r_form.as_p}}
+            <button class="form-btn" type="submit">Envoyer</button>  
+        </div>
+    </form>
+</div>
+
+{% endblock %}
