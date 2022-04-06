@@ -133,7 +133,6 @@ def createCritic(request, id):
         return render(request, template_name, context=context)
 
     elif request.method == 'POST':
-        t_form = ticket_form(instance=id)
         r_form = review_form(request.POST)
 
         if r_form.is_valid():
