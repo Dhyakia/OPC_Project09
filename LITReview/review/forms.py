@@ -1,8 +1,5 @@
 from django import forms
-from django.shortcuts import render
 from review.models import Ticket, Review
-
-from django.utils.safestring import mark_safe
 
 
 class TicketForm(forms.ModelForm):

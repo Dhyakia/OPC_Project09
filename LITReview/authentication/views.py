@@ -49,4 +49,3 @@ def signup(request):
             return redirect(settings.LOGIN_REDIRECT_URL)
 
     return render(request, 'authentication/signup.html', context={'form': form})
-

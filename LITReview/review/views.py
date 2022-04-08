@@ -3,13 +3,14 @@ from django.shortcuts import redirect, render
 from django.db.models import CharField, Value
 from itertools import chain
 
-from . import forms
+from review import forms
 from review.models import Ticket
 from review.models import Review
 
 
 @login_required
 def follows(request):
+
     return render(request, 'review/follows.html')
 
 
@@ -73,7 +74,7 @@ def createTicket(request):
             obj.save()
 
             return redirect('my-content')
-        
+
         message = 'forms incorrect.'
         context = {'form': form, 'message': message}
         return render(request, template_name, context=context)
@@ -111,7 +112,7 @@ def createReview(request):
 
             return redirect('my-content')
 
-        message = 'forms incorrect'   
+        message = 'forms incorrect'
         context = {'t_form': t_form, 'r_form': r_form, 'message': message}
         return render(request, template_name, context=context)
 
@@ -122,10 +123,9 @@ def createCritic(request, id):
     template_name = 'review/create_critic.html'
     ticket = Ticket.objects.get(id=id)
 
-    ticket_form = forms.TicketForm
     review_form = forms.ReviewForm
 
-    if request.method == 'GET': 
+    if request.method == 'GET':
         r_form = review_form()
         message = ''
         context = {'ticket': ticket, 'r_form': r_form, 'message': message}
@@ -143,7 +143,7 @@ def createCritic(request, id):
 
             return redirect('my-content')
 
-        message = 'forms incorrect'   
+        message = 'forms incorrect'
         context = {'ticket': ticket, 'r_form': r_form, 'message': message}
         return render(request, template_name, context=context)
 
@@ -160,7 +160,7 @@ def editTicket(request, id):
 
     if request.method == 'POST':
         form = forms.TicketForm(request.POST, instance=ticket)
-        
+
         if form.is_valid():
             form.save()
             return redirect('my-content')
@@ -195,7 +195,7 @@ def deleteTicket(request, id):
         return render(request, 'review/delete_ticket.html', context=context)
 
     if request.method == 'POST':
-        
+
         if ticket.image:
             ticket.image.delete()
 
