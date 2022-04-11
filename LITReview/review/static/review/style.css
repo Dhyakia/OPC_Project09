@@ -110,6 +110,27 @@ textarea {
     display: inline;
 }
 
+/* follows style */
+.follows-wrapper {
+    width: 50%;
+    margin: auto;
+}
+.follows-user-input,
+.subscription-recap {
+    padding-bottom: 20px;
+}
+.follows-item-wrapper {
+    display: flex;
+    border: 1px solid black;
+}
+.follows-username {
+    text-align: left;
+    width: 90%;
+    padding-left: 2%;
+}
+.unfollow-btn {
+    margin-top: 0px;
+}
 
 /* my_content flux, and create_critic style */
 .my-content-block,

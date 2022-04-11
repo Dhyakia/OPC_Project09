@@ -1,5 +1,5 @@
 from django import forms
-from review.models import Ticket, Review
+from review.models import Ticket, Review, UserFollows
 
 
 class TicketForm(forms.ModelForm):
@@ -15,3 +15,10 @@ class ReviewForm(forms.ModelForm):
         model = Review
         fields = ("headline", "rating", "body")
         widgets = {"rating": forms.RadioSelect()}
+
+
+class UserFollowsForm(forms.ModelForm):
+
+    class Meta:
+        model = UserFollows
+        fields = ('user', 'followed_user')

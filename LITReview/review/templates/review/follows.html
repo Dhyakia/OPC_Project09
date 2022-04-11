@@ -1,6 +1,39 @@
 {% extends 'review/base.html' %}
 {% block content %}
 
-<h1>Follows: Following / Followers</h1>
+{{message}}
+<div class="follows-wrapper">
+    <div class="follows-user-input">
+        <h3>Suivre d'autres utilisateurs</h3>
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" placeholder="nom d'utilisateurs" name="username-follows" style="text-align: center;">
+            <button type="submit" name="send-username">Envoyer</button>
+        </form>
+    </div>
+    
+    <div class="subscription-recap">
+        <h3>Abonnements</h3>
+        <form method="post">
+            {% csrf_token %}
+            {% for follow in followings %}
+            <div class="follows-item-wrapper">
+                <p class="follows-username">{{follow.followed_user.username}}</p>
+                <button class="unfollow-btn" type="submit" value="{{follow.id}}" name="unfollow">Se désabonner</button>
+            </div>
+            {% endfor %}
+        </form>
+    </div>
+    
+    <div class="followers-recap">
+        <h3>Abonnés</h3>
+        {% for follower in followers %}
+        <div class="follows-item-wrapper">
+            <p class="follows-username">{{follower.user.username}}</p>
+        </div>
+        {% endfor %}    
+    </div>
+
+</div>
 
 {% endblock %}

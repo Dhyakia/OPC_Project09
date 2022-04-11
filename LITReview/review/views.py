@@ -4,14 +4,45 @@ from django.db.models import CharField, Value
 from itertools import chain
 
 from review import forms
-from review.models import Ticket
-from review.models import Review
+from review.models import Ticket, Review, UserFollows
+from authentication.models import User
 
 
 @login_required
 def follows(request):
 
-    return render(request, 'review/follows.html')
+    if request.method == 'GET':
+
+        message = ''
+        followers = UserFollows.objects.filter(followed_user=request.user)
+        followings = UserFollows.objects.filter(user=request.user)
+
+        context = {'message': message, 'followers': followers, 'followings': followings}
+        return render(request, 'review/follows.html', context=context)
+
+    if request.method == 'POST':
+        if 'send-username' in request.POST:
+            user_input = request.POST.get("username-follows")
+
+            if User.objects.filter(username=user_input):
+                followed_user = User.objects.get(username=user_input)
+                obj = UserFollows()
+                obj.user = request.user
+                obj.followed_user = followed_user
+                obj.save()
+
+                return redirect('follows')
+
+            else:
+                return redirect('follows')
+
+        if 'unfollow' in request.POST:
+
+            # Je récupère la value de l'input cacher (qui est en fait le token)
+            id_to_delete = request.POST.get('unfollow')
+            obj = UserFollows.objects.get(id=id_to_delete)
+            obj.delete()
+            return redirect('follows')
 
 
 @login_required
