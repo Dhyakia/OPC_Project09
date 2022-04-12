@@ -1,7 +1,7 @@
 <div class="my-content-snippet">
 
     <div class="my-content-ticket-header">
-        <p class="ticket-header-left"><strong>{{user.username}}</strong> a publié un ticket:</p>
+        <p class="ticket-header-left"><strong>{{post.user.username}}</strong> a publié un ticket:</p>
         <p class="ticket-header-right">{{post.time_created}}</p>
     </div>
     
@@ -17,7 +17,16 @@
         <a href="{% url 'delete-ticket' post.id %}"><button>supprimer</button></a>
         
         {% elif name == 'flux' %}
-        <a href="{% url 'create-critic' post.id %}"><button type="submit">Créer une critique</button></a>
+
+            {% if post.answered == True %}
+            <p>Ticket déjà répondu</p>
+
+            {% elif post.answered == False %}
+            <a href="{% url 'create-critic' post.id %}"><button type="submit">Répondre au ticket</button></a>
+
+            {% endif %}
+            
+            
         {% endif %}
     </div>
 </div>

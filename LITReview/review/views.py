@@ -38,7 +38,6 @@ def follows(request):
 
         if 'unfollow' in request.POST:
 
-            # Je récupère la value de l'input cacher (qui est en fait le token)
             id_to_delete = request.POST.get('unfollow')
             obj = UserFollows.objects.get(id=id_to_delete)
             obj.delete()
@@ -48,11 +47,24 @@ def follows(request):
 @login_required
 def flux(request):
 
-    reviews = Review.objects.filter(user=request.user)
-    reviews = reviews.annotate(content_type=Value('REVIEW', CharField()))
+    follows = UserFollows.objects.filter(user=request.user)
 
-    tickets = Ticket.objects.filter(user=request.user)
-    tickets = tickets.annotate(content_type=Value('TICKET', CharField()))
+    all_reviews = Review.objects.none()
+    all_tickets = Ticket.objects.none()
+
+    for follow in follows:
+        user_followed = follow.followed_user
+
+        followed_user_reviews = Review.objects.filter(user=user_followed)
+        followed_user_tickets = Ticket.objects.filter(user=user_followed)
+
+        all_reviews = all_reviews | followed_user_reviews
+        all_tickets = all_tickets | followed_user_tickets
+
+    reviews = all_reviews.annotate(content_type=Value('REVIEW', CharField()))
+    tickets = all_tickets.annotate(content_type=Value('TICKET', CharField()))
+
+    # TODO:
 
     posts = sorted(
         chain(reviews, tickets),
@@ -134,6 +146,7 @@ def createReview(request):
 
             ticket = t_form.save(commit=False)
             ticket.user = request.user
+            ticket.answered = True
             ticket.save()
 
             review = r_form.save(commit=False)
@@ -171,6 +184,9 @@ def createCritic(request, id):
             review.user = request.user
             review.ticket = ticket
             review.save()
+
+            ticket.answered = True
+            ticket.save()
 
             return redirect('my-content')
 
@@ -245,6 +261,9 @@ def deleteReview(request, id):
 
     if request.method == 'POST':
 
+        ticket = review.ticket
+        ticket.answered = False
+        ticket.save()
         review.delete()
         return redirect('my-content')
 

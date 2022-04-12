@@ -4,7 +4,6 @@
 <div class="flux-page">
 
     <h1>Flux</h1>
-
     <div class="flux-btn">
         <a href="{% url 'create-ticket' %}"><button>Demander une critique</button></a>
         <a href="{% url 'create-review' %}"><button>Créer une critique</button></a>
@@ -13,8 +12,8 @@
     <div class="flux-page-content">
         {% for post in posts %}
             {% if post.content_type == 'TICKET' %}
-                {% include 'review/ticket_snippet.html' with name='flux' %}    
-
+                {% include 'review/ticket_snippet.html' with name='flux' %}   
+            
             {% elif post.content_type == 'REVIEW' %}
                 {% include 'review/review_snippet.html' with name='flux' %}
                 {% endif %}

@@ -103,11 +103,15 @@ textarea {
     margin-bottom: 2%;
     margin-right: 4%;
 }
-#id_rating div{
+#id_rating div {
+    width: 12%;
     display: inline-block;
 }
-#id_rating div label{
-    display: inline;
+#id_rating div label {
+    display: flex;
+}
+#id_rating div label input {
+    width: 25%;
 }
 
 /* follows style */
@@ -130,6 +134,9 @@ textarea {
 }
 .unfollow-btn {
     margin-top: 0px;
+    border: none;
+    border-left: 1px solid black;
+    border-radius: 0%;
 }
 
 /* my_content flux, and create_critic style */
