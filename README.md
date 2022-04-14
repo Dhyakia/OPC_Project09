@@ -17,7 +17,6 @@ This project is composed of:
 # Requirements
 
 * Python3 at https://www.python.org/downloads
-* Pipenv, if not already pre-installed with the python distribution
 * ... and that's it !
 
 
