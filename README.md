@@ -48,7 +48,7 @@ For a better user experience, it is recommanded to use a virtual environnement.
 
 2. Next, to create the environnement, enter this command:
     
-    Windows: ```python venv -m venv ```
+    Windows: ```python -m venv venv ```
 
     MacOs/Linux: ```python -m venv venv ```
 
