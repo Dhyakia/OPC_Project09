@@ -67,6 +67,16 @@ Using the console, navigate to the project folder and enter:
 pip install -r requirements.txt
 ```
 
+## 4. First launch: setting up the database
+
+Using the console, navigate inside the LITReview folder, where the manage.py file is and enter:
+```
+python manage.py migrate
+```
+
+Congratulation, you're now all setup for using the application !
+
+
 # Usage
 
 ## Starting the server
